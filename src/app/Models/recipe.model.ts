@@ -5,13 +5,12 @@ export class RecipeModel{
   public name:string;
   public description: string;
   public imagePath: string;
-  public ingredients: IngredientModel[];
+  public ingredients: IngredientModel[] = [];
 
-  constructor(name:string, desc:string, img:string, ingredients:IngredientModel[]) {
+  constructor(name:string, desc:string, img:string) {
     this.name = name;
     this.description = desc;
     this.imagePath = img;
-    this.ingredients = ingredients;
   }
 
 }
