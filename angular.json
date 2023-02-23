@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-recipes": {
+    "my-recipe": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/my-recipes",
+            "outputPath": "dist/my-recipe",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -29,6 +29,7 @@
               "src/styles.css"
             ],
             "scripts": [
+              "node_modules/jquery/dist/jquery.js",
               "node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
@@ -63,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "my-recipes:build:production"
+              "browserTarget": "my-recipe:build:production"
             },
             "development": {
-              "browserTarget": "my-recipes:build:development"
+              "browserTarget": "my-recipe:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "my-recipes:build"
+            "browserTarget": "my-recipe:build"
           }
         },
         "test": {
@@ -97,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

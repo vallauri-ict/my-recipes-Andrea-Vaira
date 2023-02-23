@@ -1,10 +1,10 @@
-<app-header></app-header>
+<app-header (featureSelected)="onNavigate($event)"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <!-- Un solo componente sarà visualizzato in base al click sul menù dell'header -->
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
+      <!-- un solo componente sarà visualizzato in base al click del menù dell'header-->
+      <app-recipes *ngIf="isRecipes"></app-recipes>
+      <app-shopping-list *ngIf="!isRecipes"></app-shopping-list>
     </div>
   </div>
 </div>

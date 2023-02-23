@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-recipes';
+  title = 'my-recipe';
+
+  isRecipes:boolean = true;
+
+  onNavigate(isRecipes:boolean){
+    //console.log(feature);
+    this.isRecipes = isRecipes;
+  }
 }

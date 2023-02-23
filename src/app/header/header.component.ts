@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  collapsed:Boolean = true;
+  @Output() featureSelected = new EventEmitter<boolean>();
+
+  collapsed:boolean = true;
+  isRecipes:boolean = true;
+
+  onSelect(feature:string){
+    //console.log(feature);
+    this.isRecipes = feature == "recipes";
+    this.featureSelected.emit(this.isRecipes);
+  }
 }
