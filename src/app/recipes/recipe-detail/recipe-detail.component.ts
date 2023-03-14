@@ -10,4 +10,7 @@ import { RecipeService } from '../recipe.service';
 export class RecipeDetailComponent {
   constructor(public recipeService:RecipeService) { }
 
+  onAddToShoppingList(){
+    this.recipeService.addIngridientsToShoppingList(this.recipeService.selectedRecipe.ingredients);
+  }
 }
