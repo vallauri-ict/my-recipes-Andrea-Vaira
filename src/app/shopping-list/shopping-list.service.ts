@@ -21,17 +21,17 @@ export class ShoppingListService {
     });
   }
 
-  addIngredient(ingredient: IngredientModel) {
+  addIngredient(newIngredient: IngredientModel) {
     let result = this.ingredients.find(
-      (x:any) => x.name.toLowerCase() == ingredient.name.toLowerCase()
+      (x:any) => x.name.toLowerCase() == newIngredient.name.toLowerCase()
     )
     if(!result){
-      this.ingredients.push(ingredient);
-      this.postIngredient(ingredient);
+      this.ingredients.push(newIngredient);
+      this.postIngredient(newIngredient);
     }
     else {
-      result.amount += ingredient.amount;
-      console.log(ingredient);
+      result.amount += newIngredient.amount;
+      console.log(newIngredient);
       this.patchIngredient(result._id, {amount:result.amount})
     }
   }
@@ -51,11 +51,11 @@ export class ShoppingListService {
   }
 
   postIngredient(ingredient:IngredientModel){
-    let newIngredient = {
-      name: ingredient.name,
-      amount: ingredient.amount
-    }
-    this.dataStorageService.postRequest("shopping-list", newIngredient)
+    // let newIngredient = {
+    //   name: ingredient.name,
+    //   amount: ingredient.amount
+    // }
+    this.dataStorageService.postRequest("shopping-list", ingredient)
     .subscribe({
       next : data => console.log(data),
       error : error => console.log(error)

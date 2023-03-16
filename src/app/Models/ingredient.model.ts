@@ -1,5 +1,5 @@
 export class IngredientModel{
-  public _id:string = "";
+  public _id?:string;
   public name:string;
   public amount:number;
 

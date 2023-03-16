@@ -11,17 +11,23 @@ export class RecipeService {
   recipes!: RecipeModel[] | any;
   selectedRecipe!: RecipeModel | any;
   constructor(private dataStorageService: DataStorageService, private shoppingListService: ShoppingListService) {}
+  firstScan:boolean = true;
 
   getRecipes() {
     this.dataStorageService.getRequest('recipes').subscribe({
       next: (data) => {
         this.recipes = data;
+        if(this.firstScan){
+          this.shoppingListService.getIngredients();
+          this.firstScan = false;
+        }
         // this.selectedRecipe = this.recipes[0];
       },
       error: (error) => {
         console.log(error);
       },
     });
+
   }
 
   addIngridientsToShoppingList(ingredients: IngredientModel[]){
