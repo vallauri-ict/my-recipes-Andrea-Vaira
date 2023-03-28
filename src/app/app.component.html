@@ -3,8 +3,7 @@
   <div class="row">
     <div class="col-md-12">
       <!-- un solo componente sarà visualizzato in base al click del menù dell'header-->
-      <app-recipes *ngIf="isRecipes"></app-recipes>
-      <app-shopping-list *ngIf="!isRecipes"></app-shopping-list>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

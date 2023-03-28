@@ -11,9 +11,9 @@ export class HeaderComponent {
   collapsed:boolean = true;
   isRecipes:boolean = true;
 
-  onSelect(feature:string){
-    //console.log(feature);
-    this.isRecipes = feature == "recipes";
-    this.featureSelected.emit(this.isRecipes);
-  }
+  // onSelect(feature:string){
+  //   //console.log(feature);
+  //   this.isRecipes = feature == "recipes";
+  //   this.featureSelected.emit(this.isRecipes);
+  // }
 }
