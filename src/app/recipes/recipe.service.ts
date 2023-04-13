@@ -27,10 +27,24 @@ export class RecipeService {
         console.log(error);
       },
     });
+  }
 
+  getRecipe(id:string){
+    this.dataStorageService.getRequest('recipes/'+id).subscribe(
+      (recipe:any)=>{
+        this.selectedRecipe = recipe;
+      },
+      (error:any)=>{
+        console.log(error);
+      }
+    )
   }
 
   addIngridientsToShoppingList(ingredients: IngredientModel[]){
     this.shoppingListService.addIngredients(ingredients);
+  }
+
+  addRecipe(recipe:RecipeModel){
+    return this.dataStorageService.postRequest('/recipes', recipe)
   }
 }

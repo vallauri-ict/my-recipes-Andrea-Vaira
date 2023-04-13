@@ -6,7 +6,7 @@
       </button>
       <ul class="dropdown-menu">
         <li><a (click)="onAddToShoppingList()">To shopping list</a></li>
-        <li><a>Edit recipe</a></li>
+        <li><a [routerLink]="['edit']">Edit recipe</a></li>
         <li><a>Delete recipe</a></li>
       </ul>
     </div>
@@ -35,7 +35,6 @@
 
 
 <div class="row">
-  <h3 *ngIf="!recipeService.selectedRecipe">Please select a recipe</h3>
   <div class="col-xs-12">
     <h3 *ngIf="recipeService.selectedRecipe">Ingredients</h3>
     <span *ngFor="let ingredient of recipeService.selectedRecipe?.ingredients">

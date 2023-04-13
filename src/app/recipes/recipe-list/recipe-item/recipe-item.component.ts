@@ -12,7 +12,5 @@ export class RecipeItemComponent {
 
   constructor(private recipeService:RecipeService){}
 
-  onItemClick() {
-    this.recipeService.selectedRecipe = this.recipe;
-  }
+
 }
