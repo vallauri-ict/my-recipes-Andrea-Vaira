@@ -7,7 +7,7 @@
       <ul class="dropdown-menu">
         <li><a (click)="onAddToShoppingList()">To shopping list</a></li>
         <li><a [routerLink]="['edit']">Edit recipe</a></li>
-        <li><a>Delete recipe</a></li>
+        <li><a (click)="ngxSmartModalService.getModal('myModal').open()">Delete recipe</a></li>
       </ul>
     </div>
   </div>
@@ -40,6 +40,14 @@
     <span *ngFor="let ingredient of recipeService.selectedRecipe?.ingredients">
       <span class="label label-default" style="margin-right: 5px;">{{ingredient.name}}</span>
       <span class="label label-info" style="margin-right: 5px;">{{ingredient.amount}}</span>
+      <br>
     </span>
   </div>
 </div>
+
+<ngx-smart-modal #myModal identifier="myModal">
+  <h1>Cancella ricetta</h1>
+  <p>Confermi la cancellazione della ricetta selezionata?</p>
+
+  <button (click)="deleteRecipe(myModal)">Ok</button>
+</ngx-smart-modal>

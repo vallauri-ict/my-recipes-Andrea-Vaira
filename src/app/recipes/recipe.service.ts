@@ -10,14 +10,17 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 export class RecipeService {
   recipes!: RecipeModel[] | any;
   selectedRecipe!: RecipeModel | any;
-  constructor(private dataStorageService: DataStorageService, private shoppingListService: ShoppingListService) {}
-  firstScan:boolean = true;
+  constructor(
+    private dataStorageService: DataStorageService,
+    private shoppingListService: ShoppingListService
+  ) {}
+  firstScan: boolean = true;
 
   getRecipes() {
     this.dataStorageService.getRequest('recipes').subscribe({
       next: (data) => {
         this.recipes = data;
-        if(this.firstScan){
+        if (this.firstScan) {
           this.shoppingListService.getIngredients();
           this.firstScan = false;
         }
@@ -29,22 +32,30 @@ export class RecipeService {
     });
   }
 
-  getRecipe(id:string){
-    this.dataStorageService.getRequest('recipes/'+id).subscribe(
-      (recipe:any)=>{
+  getRecipe(id: string) {
+    this.dataStorageService.getRequest('recipes/' + id).subscribe(
+      (recipe: any) => {
         this.selectedRecipe = recipe;
       },
-      (error:any)=>{
+      (error: any) => {
         console.log(error);
       }
-    )
+    );
   }
 
-  addIngridientsToShoppingList(ingredients: IngredientModel[]){
+  addIngridientsToShoppingList(ingredients: IngredientModel[]) {
     this.shoppingListService.addIngredients(ingredients);
   }
 
-  addRecipe(recipe:RecipeModel){
-    return this.dataStorageService.postRequest('/recipes', recipe)
+  addRecipe(recipe: RecipeModel) {
+    return this.dataStorageService.postRequest('recipes', recipe);
+  }
+
+  updateRecipe(_id: string, recipe: RecipeModel) {
+    return this.dataStorageService.patchRequest('recipes/' + _id, recipe);
+  }
+
+  deleteRecipe(_id: string){
+    return this.dataStorageService.deleteRequest('recipes/'+_id);
   }
 }
