@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataStorageService {
   //classe usata solo per le chiamate
-  REST_API_SERVER: string = 'http://localhost:1337/api/';
+  REST_API_SERVER: string =
+    'https://crudserver-andreavaira.onrender.com/api/';
   constructor(private httpClient: HttpClient) {}
 
   public getRequest(endpoint: string) {
@@ -18,10 +19,10 @@ export class DataStorageService {
   }
 
   public postRequest(endpoint: string, body: any) {
-    return this.httpClient.post(this.REST_API_SERVER + endpoint, {stream:body});
+    return this.httpClient.post(this.REST_API_SERVER + endpoint, body);
   }
 
   public patchRequest(endpoint: string, body: any) {
-    return this.httpClient.patch(this.REST_API_SERVER + endpoint, {stream:body});
+    return this.httpClient.patch(this.REST_API_SERVER + endpoint, body);
   }
 }

@@ -9,5 +9,24 @@
 </head>
 <body>
   <app-root></app-root>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyD1nvY0ApykaswqA3gLScNlZEJ07Miw5eI",
+      authDomain: "vairaandrea-my-recipe.firebaseapp.com",
+      projectId: "vairaandrea-my-recipe",
+      storageBucket: "vairaandrea-my-recipe.appspot.com",
+      messagingSenderId: "578977790540",
+      appId: "1:578977790540:web:43a6fa0f8c9b306f6652e9"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
 </body>
 </html>
